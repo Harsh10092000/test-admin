@@ -1,6 +1,9 @@
 <?php
 //include "components/connection.php";
 include "components/header.php";
+// $stmt = $conn->prepare("SELECT * from furniture");
+// $stmt->execute();
+// $result = $stmt->get_result(); 
 ?>
 
 <main id="main" class="main">
@@ -39,12 +42,21 @@ include "components/header.php";
               </tr>
             </thead>
             <tbody>
+           
+            
+             
               <tr>
+                 <!-- <?//php $count = 1;
+          //while ($getData = $result->fetch_assoc()) { ?> -->
+              <!-- <td>
+                <?//= $count++; ?>
+              </td> -->
                 <td>Harsh</td>
                 <td>9958</td>
                 <td>Curicó</td>
                 <td>2005/02/11</td>
                 <td>37%</td>
+                <!-- <?//php } ?> -->
               </tr>
               <tr>
                 <td>Theodore Duran</td>
