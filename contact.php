@@ -1,5 +1,5 @@
 <?php
-//include "includes/connection.php";
+//include "components/connection.php";
 include "components/header.php";
 ?>
 
