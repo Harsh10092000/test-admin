@@ -6,7 +6,7 @@ function validatePhoneNumber($phone) {
 }
 
 // Usage
-$phone = "+14155552671";
+$phone = "+91415555261";
 if (validatePhoneNumber($phone)) {
     echo "Valid phone number!";
 } else {
