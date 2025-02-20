@@ -115,6 +115,13 @@ include "components/header.php";
     .btn-left-padding {
         margin-left: 10px;
     }
+    .status-sub-heading {
+        font-size: 15px !important;
+        font-weight: 600 !important;
+    }
+    .curr-status {
+        color: red !important;
+    }
 </style>
 
 
@@ -180,6 +187,19 @@ include "components/header.php";
 
 
                 </div>
+
+                <div>
+                    <div class="sec-heading">
+                       Current Status
+                    </div>
+                    <div class="btm-border d-flex user-details">
+                        <div class="w-25 sec-1 status-sub-heading">Status</div>
+                        <div class="w-75 sec-2 curr-status">Payment Not completed</div>
+                    </div>
+
+                   
+                </div>
+
 
                 <div>
                     <div class="sec-heading">
