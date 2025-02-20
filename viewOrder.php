@@ -130,17 +130,51 @@ include "components/header.php";
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Vertically Centered</h5>
+                <h5 class="modal-title">Approve Request</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                Non omnis incidunt qui sed occaecati magni asperiores est mollitia. Soluta at et reprehenderit. Placeat
-                autem numquam et fuga numquam. Tempora in facere consequatur sit dolor ipsum. Consequatur nemo amet
-                incidunt est facilis. Dolorem neque recusandae quo sit molestias sint dignissimos.
+            Please confirm if all the necessary information has been reviewed thoroughly
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-success">Approve</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="decline_request" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Decline Request</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            Please confirm that you want to decline this request.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-warning">Decline</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="delete_request" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Delete Request</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            This action will permanently delete the item. This action cannot be undone.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger">Delete</button>
             </div>
         </div>
     </div>
@@ -181,8 +215,8 @@ include "components/header.php";
                     <div class="d-flex">
                         <div class="approve-btn btn-desgin" data-bs-toggle="modal" data-bs-target="#verticalycentered">
                             Approve</div>
-                        <div class="order-id btn-left-padding decline-btn btn-desgin">Decline</div>
-                        <div class="order-id btn-left-padding delete-btn btn-desgin">Delete</div>
+                        <div class="order-id btn-left-padding decline-btn btn-desgin" data-bs-toggle="modal" data-bs-target="#decline_request">Decline</div>
+                        <div class="order-id btn-left-padding delete-btn btn-desgin" data-bs-toggle="modal" data-bs-target="#delete_request">Delete</div>
                     </div>
 
 
