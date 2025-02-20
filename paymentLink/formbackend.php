@@ -57,8 +57,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Validate the form
     $errors = validateForm($_POST);
 
-    
-
     if (empty($errors)) {
         // Process the form data (e.g., save to database, send email)
         echo "Form submitted successfully!";

@@ -90,6 +90,18 @@ function validateForm($data, $files) {
         $errors[] = "Valid phone number is required.";
     }
 
+    // if (empty($data['phone']) || !validatePhoneNumber($data['phone'])) {
+    //     $errors[] = "Valid phone number is required.";
+    // } else {
+    //     // Verify country name with phone number
+    //     $countryName = getCountryNameFromPhone($data['phone']);
+    //     if (empty($countryName)) {
+    //         $errors[] = "Invalid phone number or country not found.";
+    //     } else {
+    //         $_SESSION['country_name'] = $countryName; // Store country name in session
+    //     }
+    // }
+
     // 7. Description validation
     if (empty($data['description'])) {
         $errors[] = "Description is required.";

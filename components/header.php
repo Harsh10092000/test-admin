@@ -30,10 +30,10 @@
 
     <!-- Template Main CSS File -->
     <link href="assets/css/style.css" rel="stylesheet">
-
+<!-- 
     <script>document.addEventListener('contextmenu', function (e) {
             e.preventDefault();
-        });</script>
+        });</script> -->
 </head>
 
 <body>
