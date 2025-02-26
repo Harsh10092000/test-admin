@@ -30,7 +30,7 @@ $userChoices = [
     'soup_cart' => ["KRD-30-32", "KRD-31-33", "KRD-32-34", "KRD-33-35", "KRD-34-36", "KRD-35-37"], // 6 users chose soup cart
     'chaat_cart' => ["KRD-40-42", "KRD-41-43", "KRD-42-44", "KRD-43-45", "KRD-44-46", "KRD-45-47", "KRD-46-48", "KRD-47-49"], // 8 users chose chaat cart
     'vegetable_cart' => ["KRD-50-52", "KRD-51-53"], // 2 users chose vegetable cart
-    'golgappe_cart' => array_slice($orderIDs, 0, 25), // 25 users chose golgappe cart
+    'golgappe_cart' => array_slice(array: $orderIDs, 0, 25), // 25 users chose golgappe cart
 ];
 
 // Function to randomly select users based on the allotment limit

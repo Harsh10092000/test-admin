@@ -89,7 +89,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
     <button id="payButton" onclick="generatePaymentLink()">Generate Payment Link</button>
-    
     <div id="paymentLink" style="margin-top: 20px;"></div>
 </body>
 </html>

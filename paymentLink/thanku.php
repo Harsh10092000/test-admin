@@ -3,140 +3,117 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Application Status</title>
+    <title>Thank You for Your Request</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f0f4f8, #d9e2ec);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
-
         .container {
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             max-width: 500px;
-            margin: 0 auto;
+            width: 100%;
+            text-align: center;
+            animation: fadeIn 0.5s ease-in-out;
         }
-
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
         h1 {
-            font-size: 20px;
-            text-align: center;
-            margin-bottom: 20px;
+            color: #2d6a4f;
+            font-size: 32px;
+            margin-bottom: 10px;
         }
-
-        .search-form {
-            margin-bottom: 20px;
+        p {
+            color: #555;
+            font-size: 16px;
+            line-height: 1.5;
+            margin: 10px 0;
         }
-
-        input {
-            width: 70%;
-            padding: 8px;
-            border: 1px solid #ccc;
+        .registration-id {
+            background: #eef7f2;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 18px;
+            color: #2d6a4f;
+            font-weight: 600;
+            margin: 20px 0;
+            display: inline-block;
         }
-
-        button {
-            padding: 8px 15px;
-            background: #007bff;
-            color: white;
-            border: none;
-            cursor: pointer;
+        .payment-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #40916c;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(64, 145, 108, 0.3);
         }
-
-        button:hover {
-            background: #0056b3;
+        .payment-button:hover {
+            background: #2d6a4f;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(64, 145, 108, 0.4);
         }
-
-        .result, .no-result {
-            display: none;
-            border: 1px solid #ccc;
-            padding: 10px;
+        .footer {
+            margin-top: 30px;
+            font-size: 14px;
+            color: #888;
         }
-
-        .info {
-            margin: 5px 0;
+        .footer a {
+            color: #40916c;
+            text-decoration: none;
         }
-
-        .status-approved { color: green; }
-        .status-pending { color: orange; }
-        .status-rejected { color: red; }
-
-        .no-result {
-            text-align: center;
-            color: red;
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 480px) {
+            .container {
+                padding: 20px;
+                margin: 20px;
+            }
+            h1 {
+                font-size: 28px;
+            }
+            .payment-button {
+                padding: 10px 25px;
+                font-size: 14px;
+            }
         }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
-        <h1>Check Application Status</h1>
-        <form class="search-form" onsubmit="searchOrder(event)">
-            <input type="text" id="orderId" placeholder="Enter Registration ID" required>
-            <button type="submit">Search</button>
-        </form>
-        
-        <div id="results" class="result">
-            <div class="info"><strong>Name:</strong> <span id="name"></span></div>
-            <div class="info"><strong>Father/Husband:</strong> <span id="fatherName"></span></div>
-            <div class="info"><strong>Address:</strong> <span id="address"></span>, <span id="district"></span>, <span id="state"></span> - <span id="pincode"></span></div>
-            <div class="info"><strong>Contact:</strong> <span id="mobile"></span></div>
-            <div class="info"><strong>Aadhar:</strong> <span id="aadhar"></span></div>
-            <div class="info"><strong>Business Type:</strong> <span id="businessType"></span></div>
-            <div class="info"><strong>Bank:</strong> <span id="bankHolder"></span> - <span id="bankAccount"></span> (<span id="bankName"></span>)</div>
-            <div class="info"><strong>Status:</strong> <span id="status"></span></div>
-        </div>
-
-        <div id="noResults" class="no-result">
-            <p>No results found for this Registration ID.</p>
+        <h1>Thank You!</h1>
+        <p>Your request has been successfully submitted.</p>
+        <div class="registration-id">Registration ID: <span id="reg-id">[REGISTRATION_ID]</span></div>
+        <p>To finalize your request, please proceed with the payment below:</p>
+        <a href="[PAYMENT_LINK]" class="payment-button">Make Payment Now</a>
+        <div class="footer">
+            <p>Questions? Contact us at <a href="mailto:support@example.com">support@example.com</a></p>
         </div>
     </div>
 
     <script>
-        const sampleData = {
-            "REG20250220-12345": {
-                name: "Rahul Sharma",
-                fatherName: "Mohan Sharma",
-                address: "123, Main Street",
-                district: "Kurukshetra",
-                pincode: "136118",
-                state: "Haryana",
-                mobile: "9876543210",
-                aadhar: "1234-5678-9012",
-                businessType: "Fast Food",
-                bankHolder: "Rahul Sharma",
-                bankAccount: "12345678901",
-                bankName: "State Bank of India",
-                status: "Approved"
-            }
-        };
+        // Simulate dynamic data (replace with actual backend logic)
+        const registrationId = "REG20250220-12345";
+        const paymentLink = "https://example.com/payment?reg_id=" + registrationId;
 
-        function searchOrder(event) {
-            event.preventDefault();
-            const orderId = document.getElementById('orderId').value.trim();
-            const results = document.getElementById('results');
-            const noResults = document.getElementById('noResults');
-
-            results.style.display = 'none';
-            noResults.style.display = 'none';
-
-            const data = sampleData[orderId];
-            if (data) {
-                document.getElementById('name').textContent = data.name;
-                document.getElementById('fatherName').textContent = data.fatherName;
-                document.getElementById('address').textContent = data.address;
-                document.getElementById('district').textContent = data.district;
-                document.getElementById('pincode').textContent = data.pincode;
-                document.getElementById('state').textContent = data.state;
-                document.getElementById('mobile').textContent = data.mobile;
-                document.getElementById('aadhar').textContent = data.aadhar;
-                document.getElementById('businessType').textContent = data.businessType;
-                document.getElementById('bankHolder').textContent = data.bankHolder;
-                document.getElementById('bankAccount').textContent = data.bankAccount;
-                document.getElementById('bankName').textContent = data.bankName;
-                const status = document.getElementById('status');
-                status.textContent = data.status;
-                status.className = `status-${data.status.toLowerCase()}`;
-                results.style.display = 'block';
-            } else {
-                noResults.style.display = 'block';
-            }
-        }
+        document.getElementById("reg-id").textContent = registrationId;
+        document.querySelector(".payment-button").setAttribute("href", paymentLink);
     </script>
 </body>
 </html>
