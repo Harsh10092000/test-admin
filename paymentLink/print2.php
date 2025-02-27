@@ -6,9 +6,10 @@
     <title>Application Form - Printable Version</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600&display=swap');
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Inter', 'Noto Sans Devanagari', sans-serif;
             margin: 0;
             padding: 15px;
             background-color: #fff;
@@ -39,6 +40,7 @@
             font-size: 20px;
             font-weight: 600;
             text-transform: none;
+            font-family: 'Inter', sans-serif;
         }
 
         .buttons {
@@ -56,6 +58,7 @@
             font-weight: 500;
             cursor: pointer;
             transition: background-color 0.3s ease;
+            font-family: 'Inter', sans-serif;
         }
 
         .print-btn:hover, .download-btn:hover {
@@ -78,9 +81,10 @@
             margin-bottom: 8px;
             border-bottom: 1px solid #e5e7eb;
             padding-bottom: 6px;
+            font-family: 'Noto Sans Devanagari', 'Inter', sans-serif;
         }
 
-        .row {
+        .row , .pdf-optimized .row {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 8px;
@@ -92,6 +96,7 @@
             color: #555;
             margin-bottom: 4px;
             font-size: 12px;
+            font-family: 'Noto Sans Devanagari', 'Inter', sans-serif;
         }
 
         .value {
@@ -102,7 +107,8 @@
             font-size: 12px;
             color: #333;
             box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.02);
-            word-wrap: break-word;
+            /* word-wrap: break-word; */
+            font-family: 'Noto Sans Devanagari', 'Inter', sans-serif;
         }
 
         .footer {
@@ -112,6 +118,7 @@
             font-size: 10px;
             border-top: 1px solid #e5e7eb;
             padding-top: 8px;
+            font-family: 'Inter', sans-serif;
         }
 
         /* Page break class for sections */
@@ -124,6 +131,7 @@
                 margin: 0;
                 padding: 0;
                 background-color: #fff;
+                -webkit-print-color-adjust: exact; /* Ensure colors print accurately */
             }
 
             .container {
@@ -145,6 +153,7 @@
                 border: 1px solid #e5e7eb;
                 box-shadow: none;
                 margin-bottom: 10px;
+                page-break-inside: avoid; /* Prevent section breaks within content */
             }
 
             .section h4 {
@@ -152,20 +161,26 @@
                 margin-bottom: 6px;
                 padding-bottom: 4px;
                 border-bottom: 1px solid #e5e7eb;
+                font-family: 'Noto Sans Devanagari', 'Inter', sans-serif;
             }
 
             .value {
                 border: 1px solid #e5e7eb;
                 padding: 4px 6px;
                 box-shadow: none;
+                font-family: 'Noto Sans Devanagari', 'Inter', sans-serif;
             }
 
-            .row {
+            .row , .pdf-optimized .row {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
                 gap: 6px;
+                margin-bottom: 6px;
+                page-break-inside: avoid; /* Prevent row breaks within grid */
             }
 
             .page-break {
-                page-test: always;
+                page-break-before: always;
             }
         }
 
@@ -175,13 +190,14 @@
                 margin: 5px;
             }
 
-            .row {
+            .row, .pdf-optimized .row {
                 grid-template-columns: 1fr;
                 gap: 6px;
             }
 
             .print-heading {
                 font-size: 18px;
+                font-family: 'Inter', sans-serif;
             }
 
             .buttons {
@@ -191,6 +207,7 @@
 
             .print-btn, .download-btn {
                 width: 100%;
+                font-family: 'Inter', sans-serif;
             }
 
             .section {
@@ -199,12 +216,13 @@
 
             .section h4 {
                 font-size: 14px;
+                font-family: 'Noto Sans Devanagari', 'Inter', sans-serif;
             }
         }
 
         /* Ensure proper rendering for PDF */
         .pdf-optimized {
-            font-family: 'Inter', sans-serif !important;
+            font-family: 'Noto Sans Devanagari', 'Inter', sans-serif !important;
             line-height: 1.3 !important;
             background: #ffffff !important;
             color: #333 !important;
@@ -221,7 +239,7 @@
             border: 1px solid #ddd !important;
         }
     </style>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body>
     <div class="container">
@@ -244,7 +262,7 @@
         </div>
 
         <!-- Section 1: व्यक्तिगत जानकारी -->
-        <div class="section ">
+        <div class="section">
             <h4>व्यक्तिगत जानकारी</h4>
             <div class="row">
                 <div class="col">
@@ -304,7 +322,7 @@
         </div>
 
         <!-- Section 3: व्यवसाय का प्रकार -->
-        <div class="section ">
+        <div class="section">
             <h4>व्यवसाय का प्रकार</h4>
             <div class="row">
                 <div class="col">
@@ -367,7 +385,7 @@
         </div>
 
         <!-- Section 6: दस्तावेज़ अपलोड करें -->
-        <div class="section">
+        <div class="section ">
             <h4>दस्तावेज़ अपलोड करें (PDF/JPEG, अधिकतम 2MB)</h4>
             <div class="row">
                 <div class="col">
@@ -393,21 +411,22 @@
                 const opt = {
                     margin: 0,
                     filename: 'application_form.pdf',
-                    image: { type: 'jpeg', quality: 0.98 },
+                    image: { type: 'jpeg', quality: 0.7 },
                     html2canvas: { 
                         scale: 2, 
                         useCORS: true,
                         letterRendering: true,
-                        logging: false
+                        logging: false,
+                        allowTaint: true
                     },
                     jsPDF: { 
                         unit: 'mm', 
                         format: 'a4', 
                         orientation: 'portrait',
-                        //putOnlyUsedFonts: true
+                        putOnlyUsedFonts: true
                     },
                     pagebreak: { 
-                        //mode: ['avoid-all', 'css', 'legacy'],
+                        mode: ['avoid-all', 'css', 'legacy'],
                         before: '.page-break'
                     }
                 };
