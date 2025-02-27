@@ -114,6 +114,11 @@
             padding-top: 8px;
         }
 
+        /* Page break class for sections */
+        .page-break {
+            page-break-before: always;
+        }
+
         @media print {
             body {
                 margin: 0;
@@ -157,6 +162,10 @@
 
             .row {
                 gap: 6px;
+            }
+
+            .page-break {
+                page-test: always;
             }
         }
 
@@ -235,7 +244,7 @@
         </div>
 
         <!-- Section 1: व्यक्तिगत जानकारी -->
-        <div class="section">
+        <div class="section ">
             <h4>व्यक्तिगत जानकारी</h4>
             <div class="row">
                 <div class="col">
@@ -280,7 +289,7 @@
         </div>
 
         <!-- Section 2: दस्तावेज़ जानकारी -->
-        <div class="section">
+        <div class="section ">
             <h4>दस्तावेज़ जानकारी</h4>
             <div class="row">
                 <div class="col">
@@ -295,7 +304,7 @@
         </div>
 
         <!-- Section 3: व्यवसाय का प्रकार -->
-        <div class="section">
+        <div class="section ">
             <h4>व्यवसाय का प्रकार</h4>
             <div class="row">
                 <div class="col">
@@ -306,7 +315,7 @@
         </div>
 
         <!-- Section 4: कार्य स्थान -->
-        <div class="section">
+        <div class="section ">
             <h4>कार्य स्थान</h4>
             <div class="row">
                 <div class="col">
@@ -323,7 +332,7 @@
         </div>
 
         <!-- Section 5: बैंक विवरण (रिफंड के लिए) -->
-        <div class="section">
+        <div class="section page-break">
             <h4>बैंक विवरण (रिफंड हेतु)</h4>
             <div class="row">
                 <div class="col">
@@ -381,34 +390,27 @@
         document.addEventListener('DOMContentLoaded', function() {
             function downloadPDF() {
                 const element = document.querySelector('.container');
-                var opt = {
-  margin:       1,
-  filename:     'myfile.pdf',
-  image:        { type: 'jpeg', quality: 0.98 },
-  html2canvas:  { scale: 2 },
-  //jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
-};
-                // const opt = {
-                //     margin: 0,
-                //     filename: 'application_form.pdf',
-                //     image: { type: 'jpeg', quality: 0.7 },
-                //     html2canvas: { 
-                //         scale: 1, 
-                //         useCORS: true,
-                //         letterRendering: true,
-                //         logging: false
-                //     },
-                //     jsPDF: { 
-                //         unit: 'mm', 
-                //         format: 'a4', 
-                //         orientation: 'portrait',
-                //        // putOnlyUsedFonts: true
-                //     },
-                //     // pagebreak: { 
-                //     //     mode: ['avoid-all', 'css', 'legacy'],
-                //     //     before: '.section'
-                //     // }
-                // };
+                const opt = {
+                    margin: 0,
+                    filename: 'application_form.pdf',
+                    image: { type: 'jpeg', quality: 0.98 },
+                    html2canvas: { 
+                        scale: 2, 
+                        useCORS: true,
+                        letterRendering: true,
+                        logging: false
+                    },
+                    jsPDF: { 
+                        unit: 'mm', 
+                        format: 'a4', 
+                        orientation: 'portrait',
+                        //putOnlyUsedFonts: true
+                    },
+                    pagebreak: { 
+                        //mode: ['avoid-all', 'css', 'legacy'],
+                        before: '.page-break'
+                    }
+                };
 
                 html2pdf().set(opt).from(element).toPdf().get('pdf').then((pdf) => {
                     pdf.setProperties({
