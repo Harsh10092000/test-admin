@@ -41,7 +41,12 @@
             text-transform: none;
         }
 
-        .print-btn {
+        .buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .print-btn, .download-btn {
             padding: 6px 12px;
             background-color: #2d6a4f;
             color: #fff;
@@ -53,16 +58,17 @@
             transition: background-color 0.3s ease;
         }
 
-        .print-btn:hover {
+        .print-btn:hover, .download-btn:hover {
             background-color: #1f4b36;
         }
 
         .section {
             margin-bottom: 15px;
             padding: 10px;
-            background-color: #f9fafb;
+            background-color: #ffffff;
             border-radius: 4px;
             border: 1px solid #e5e7eb;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
         }
 
         .section h4 {
@@ -121,32 +127,36 @@
                 padding: 5px;
                 max-width: 100%;
                 border-radius: 0;
+                margin: 0;
             }
 
-            .print-btn, .header {
-                display: none;
-            }
-
-            .footer {
+            .header, .print-btn, .download-btn, .footer {
                 display: none;
             }
 
             .section {
                 padding: 5px;
-                background-color: #fff;
-                border: none;
+                background-color: #ffffff;
+                border: 1px solid #e5e7eb;
                 box-shadow: none;
+                margin-bottom: 10px;
             }
 
             .section h4 {
                 font-size: 14px;
                 margin-bottom: 6px;
+                padding-bottom: 4px;
+                border-bottom: 1px solid #e5e7eb;
             }
 
             .value {
-                border: none;
+                border: 1px solid #e5e7eb;
                 padding: 4px 6px;
                 box-shadow: none;
+            }
+
+            .row {
+                gap: 6px;
             }
         }
 
@@ -165,10 +175,13 @@
                 font-size: 18px;
             }
 
-            .print-btn {
-                position: static;
-                margin: 8px auto;
-                display: block;
+            .buttons {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .print-btn, .download-btn {
+                width: 100%;
             }
 
             .section {
@@ -179,13 +192,36 @@
                 font-size: 14px;
             }
         }
+
+        /* Ensure proper rendering for PDF */
+        .pdf-optimized {
+            font-family: 'Inter', sans-serif !important;
+            line-height: 1.3 !important;
+            background: #ffffff !important;
+            color: #333 !important;
+        }
+
+        .pdf-optimized .section {
+            background: #ffffff !important;
+            border: 1px solid #e5e7eb !important;
+            box-shadow: none !important;
+        }
+
+        .pdf-optimized .value {
+            background: #fff !important;
+            border: 1px solid #ddd !important;
+        }
     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body>
     <div class="container">
         <div class="header">
             <div class="print-heading">Application Form</div>
-            <button class="print-btn" onclick="window.print()">Print</button>
+            <div class="buttons">
+                <button class="print-btn" onclick="window.print()">Print</button>
+                <button class="download-btn" onclick="downloadPDF()">Download File</button>
+            </div>
         </div>
 
         <div class="section">
@@ -340,5 +376,55 @@
             <p>Generated on: <?php echo date('F d, Y'); ?></p>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            function downloadPDF() {
+                const element = document.querySelector('.container');
+                var opt = {
+  margin:       1,
+  filename:     'myfile.pdf',
+  image:        { type: 'jpeg', quality: 0.98 },
+  html2canvas:  { scale: 2 },
+  //jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+};
+                // const opt = {
+                //     margin: 0,
+                //     filename: 'application_form.pdf',
+                //     image: { type: 'jpeg', quality: 0.7 },
+                //     html2canvas: { 
+                //         scale: 1, 
+                //         useCORS: true,
+                //         letterRendering: true,
+                //         logging: false
+                //     },
+                //     jsPDF: { 
+                //         unit: 'mm', 
+                //         format: 'a4', 
+                //         orientation: 'portrait',
+                //        // putOnlyUsedFonts: true
+                //     },
+                //     // pagebreak: { 
+                //     //     mode: ['avoid-all', 'css', 'legacy'],
+                //     //     before: '.section'
+                //     // }
+                // };
+
+                html2pdf().set(opt).from(element).toPdf().get('pdf').then((pdf) => {
+                    pdf.setProperties({
+                        title: 'Application Form',
+                        author: 'Your Organization',
+                        creator: 'Your Application'
+                    });
+                    pdf.output('save');
+                });
+            }
+
+            const downloadBtn = document.querySelector('.download-btn');
+            if (downloadBtn) {
+                downloadBtn.addEventListener('click', downloadPDF);
+            }
+        });
+    </script>
 </body>
 </html>
