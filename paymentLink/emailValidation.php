@@ -8,7 +8,7 @@ function validateEmailDomain($email) {
     }
 }
 
-$email = "lejihod131@minduls.com";
+$email = "howardea@aafes.com";
 if (validateEmailDomain($email)) {
     echo $email . "<br />";
     echo "The email domain is valid!";
